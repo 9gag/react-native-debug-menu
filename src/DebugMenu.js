@@ -9,7 +9,7 @@ import {
   Animated,
   PanResponder,
   TouchableOpacity,
-  BackAndroid
+  BackHandler
 } from 'react-native'
 
 import type { DebugMenuType } from './type'
@@ -65,12 +65,12 @@ class DebugMenu extends React.Component {
   }
 
   componentDidMount () {
-    BackAndroid.addEventListener('debugMenuListener', this._onBack)
+    BackHandler.addEventListener('debugMenuListener', this._onBack)
   }
 
   componentWillUnmount () {
     this.state.pan.removeListener(this.panListener)
-    BackAndroid.removeEventListener('debugMenuListener', this._onBack)
+    BackHandler.removeEventListener('debugMenuListener', this._onBack)
   }
 
   _renderDraggable () {
